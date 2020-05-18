@@ -142,3 +142,6 @@ if(BUILD_TESTS)
     enable_testing()
     add_subdirectory(test)
 endif()
+
+# pybind11
+add_subdirectory(python)
