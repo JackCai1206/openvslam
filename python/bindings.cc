@@ -14,7 +14,7 @@ namespace py = pybind11;
 PYBIND11_MODULE(openvslam_python, m) {
 	NDArrayConverter::init_numpy();
 
-	py::class_<openvslam::config>(m, "config")
+	py::class_<openvslam::config, std::shared_ptr<openvslam::config>>(m, "config")
 		.def(py::init<const std::string&>(), py::arg("config_file_path"))
 		.def(py::init<const YAML::Node&, const std::string&>(), py::arg("yaml_node"), py::arg("config_file_path") = "");
 
