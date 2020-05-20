@@ -3,6 +3,7 @@
 #include "openvslam/publish/frame_publisher.h"
 #include "openvslam/publish/map_publisher.h"
 #include "ndarray_converter.h"
+#include "openvslam/type.h"
 
 #include <pybind11/stl.h>
 #include "pybind11/pybind11.h"
