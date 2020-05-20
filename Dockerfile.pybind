@@ -19,7 +19,6 @@ RUN set -x && \
 	python3-dev \
 	python3-numpy \
 	python3-pip \
-	software-properties-common && \
   : "g2o dependencies" && \
   apt-get install -y -qq \
 	libgoogle-glog-dev \
@@ -27,7 +26,6 @@ RUN set -x && \
 	libsuitesparse-dev \
 	libglew-dev && \
   : "OpenCV dependencies" && \
-  add-apt-repository ppa:jonathonf/ffmpeg-4 && \
   apt-get install -y -qq \
 	libjpeg-dev \
 	libpng++-dev \
