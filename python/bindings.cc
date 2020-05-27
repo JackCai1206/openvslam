@@ -7,6 +7,7 @@
 
 #include <pybind11/stl.h>
 #include "pybind11/pybind11.h"
+#include "pybind11/eigen.h"
 #include <opencv2/core/core.hpp>
 #include <yaml-cpp/yaml.h>
 
@@ -21,7 +22,8 @@ PYBIND11_MODULE(openvslam_python, m) {
 
     // py::class_<openvslam::data::landmark>(m, "landmark");
 
-    // py::class_<openvslam::data::map_database>(m, "map_database");
+    // py::class_<openvslam::data::map_database>(m, "map_database")
+    // .def();
 
     py::class_<openvslam::system>(m, "system")
         .def(py::init<const std::shared_ptr<openvslam::config>&, const std::string&>(), py::arg("cfg"), py::arg("vocab_file_path"))
