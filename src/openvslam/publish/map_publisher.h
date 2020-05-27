@@ -55,6 +55,12 @@ public:
     unsigned int get_keyframes(std::vector<data::keyframe*>& all_keyfrms);
 
     /**
+	 * Wrapper around get_keyframes to get around passing by reference
+	 * @return all keyframes in map
+	 */
+    std::vector<data::keyframe*> get_keyframes_pybind();
+
+    /**
      * Get all landmarks and local landmarks
      * @param all_landmarks
      * @param local_landmarks

@@ -32,6 +32,10 @@ unsigned int map_publisher::get_keyframes(std::vector<data::keyframe*>& all_keyf
     return map_db_->get_num_keyframes();
 }
 
+std::vector<data::keyframe*> map_publisher::get_keyframes_pybind() {
+    return map_db_->get_all_keyframes();
+}
+
 unsigned int map_publisher::get_landmarks(std::vector<data::landmark*>& all_landmarks,
                                           std::set<data::landmark*>& local_landmarks) {
     all_landmarks = map_db_->get_all_landmarks();

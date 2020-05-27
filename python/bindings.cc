@@ -10,6 +10,7 @@
 #include "pybind11/eigen.h"
 #include <opencv2/core/core.hpp>
 #include <yaml-cpp/yaml.h>
+#include <nlohmann/json_fwd.hpp>
 
 namespace py = pybind11;
 
@@ -20,10 +21,15 @@ PYBIND11_MODULE(openvslam_python, m) {
         .def(py::init<const std::string&>(), py::arg("config_file_path"))
         .def(py::init<const YAML::Node&, const std::string&>(), py::arg("yaml_node"), py::arg("config_file_path") = "");
 
-    // py::class_<openvslam::data::landmark>(m, "landmark");
+    // py::class_<openvslam::data::landmark>(m, "landmark")
+    // 	.def();
 
     // py::class_<openvslam::data::map_database>(m, "map_database")
     // .def();
+
+    py::class_<openvslam::data::keyframe>(m, "keyframe")
+        .def("to_json", &openvslam::data::keyframe::to_json_string)
+        .def("get_cam_pose", &openvslam::data::keyframe::get_cam_pose);
 
     py::class_<openvslam::system>(m, "system")
         .def(py::init<const std::shared_ptr<openvslam::config>&, const std::string&>(), py::arg("cfg"), py::arg("vocab_file_path"))
@@ -58,6 +64,6 @@ PYBIND11_MODULE(openvslam_python, m) {
         // .def(py::init<const std::shared_ptr<openvslam::config>&, openvslam::data::map_database*>(), py::arg("cfg"), py::arg("map_db"))
         .def("set_current_cam_pose", &openvslam::publish::map_publisher::set_current_cam_pose, py::arg("cam_pose_cw"))
         .def("get_current_cam_pose", &openvslam::publish::map_publisher::get_current_cam_pose)
-        .def("get_keyframes", &openvslam::publish::map_publisher::get_keyframes, py::arg("all_keyfrms"));
+        .def("get_keyframes", &openvslam::publish::map_publisher::get_keyframes_pybind, py::return_value_policy::reference_internal);
     // .def("get_landmarks", &openvslam::publish::map_publisher::get_landmarks, py::arg("all_landmarks"), py::arg("local_landmarks"));
 }

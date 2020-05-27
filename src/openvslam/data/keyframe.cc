@@ -135,6 +135,10 @@ nlohmann::json keyframe::to_json() const {
             {"loop_edges", loop_edge_ids}};
 }
 
+std::string keyframe::to_json_string() const {
+    return keyframe::to_json().dump();
+}
+
 void keyframe::set_cam_pose(const Mat44_t& cam_pose_cw) {
     std::lock_guard<std::mutex> lock(mtx_pose_);
     cam_pose_cw_ = cam_pose_cw;

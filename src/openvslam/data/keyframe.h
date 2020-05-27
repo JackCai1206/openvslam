@@ -67,6 +67,11 @@ public:
      */
     nlohmann::json to_json() const;
 
+    /**
+     * Encode this keyframe information as JSON string
+     */
+    std::string to_json_string() const;
+
     //-----------------------------------------
     // camera pose
 
