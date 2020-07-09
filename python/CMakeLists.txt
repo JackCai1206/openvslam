@@ -11,6 +11,7 @@ SET(SOURCES
 
 # PyBind
 find_package(pybind11 REQUIRED)
+include_directories(${pybind11_INCLUDE_DIR})
 pybind11_add_module(${PROJECT_NAME}_python ${SOURCES})
 
 # Link OpenVSLAM_python
